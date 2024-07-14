@@ -13,18 +13,35 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 # Tools
-alias n='nvim'
-alias g='git'
-alias d='docker'
-alias r='rails'
+alias v='nvim'
 alias bat='batcat'
 alias lzg='lazygit'
 alias lzd='lazydocker'
 
 # Git
-alias gcm='git commit -m'
-alias gcam='git commit -a -m'
-alias gcad='git commit -a --amend'
+alias ts="tig status"
+alias ga="git add"
+complete -F _complete_alias ga
+alias gc="git commit"
+complete -F _complete_alias gc
+alias gp="git push"
+complete -F _complete_alias gp
+alias gpl="git pull"
+complete -F _complete_alias gpl
+alias gd="git diff"
+complete -F _complete_alias gd
+alias gb="git branch -av"
+complete -F _complete_alias gb
+alias gco="git checkout"
+complete -F _complete_alias gco
+alias gs="git switch"
+complete -F _complete_alias gs
+alias gr="git restore"
+complete -F _complete_alias gr
+alias gmnff="git merge --no-ff"
+alias glg="git log --oneline --graph --color --all --decorate"
+# http://qiita.com/uasi/items/f19a120e012c0c75d856
+alias guc="git reset HEAD^"
 
 # Compression
 compress() { tar -czf "${1%/}.tar.gz" "${1%/}"; }
@@ -35,4 +52,12 @@ webm2mp4() {
   input_file="$1"
   output_file="${input_file%.webm}.mp4"
   ffmpeg -i "$input_file" -c:v libx264 -preset slow -crf 22 -c:a aac -b:a 192k "$output_file"
+}
+
+# search git branch
+fbr() {
+  local branches branch
+  branches=$(git branch) &&
+  branch=$(echo "$branches" | fzf +s +m) &&
+  git checkout $(echo "$branch" | sed "s/.* //")
 }

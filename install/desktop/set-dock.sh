@@ -1,18 +1,15 @@
+# get webstorm
+webstorm=$(find ~/.local/share/applications -name 'jetbrains-webstorm-*' | sed 's/.*\///')
+
 # Favorite apps for dock
 apps=(
 	"google-chrome.desktop"
 	"Alacritty.desktop"
-	"Neovim.desktop"
-	"code.desktop"
-	"pinta_pinta.desktop"
-	"md.obsidian.Obsidian.desktop"
-	"Activity.desktop"
-	"Docker.desktop"
-	"Omakub.desktop"
+	"$webstorm"
+	"slack.desktop"
 	"1password.desktop"
 	"org.gnome.Settings.desktop"
 	"org.gnome.Nautilus.desktop"
-	"localsend_app.desktop"
 )
 
 # Array to hold installed favorite apps

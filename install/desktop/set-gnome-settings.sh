@@ -6,3 +6,7 @@ gsettings set org.gnome.desktop.interface monospace-font-name 'CaskaydiaMono Ner
 
 # Reveal week numbers in the Gnome calendar
 gsettings set org.gnome.desktop.calendar show-weekdate true
+
+# Key repeat
+gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 20
+gsettings set org.gnome.desktop.peripherals.keyboard delay 200
